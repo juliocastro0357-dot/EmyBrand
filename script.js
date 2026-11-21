@@ -136,13 +136,21 @@ function applyLanguage(language) {
   document.querySelector('.whatsapp-float').href = toEnglish
     ? `https://wa.me/526291711138?text=${encodeURIComponent('Hello, EmyBrand. I would like information about your services.')}`
     : 'https://wa.me/526291711138?text=Hola%2C%20EmyBrand.%20Quiero%20informaci%C3%B3n%20sobre%20sus%20servicios.';
-  document.querySelector('.price-card:first-of-type .price-amount small').textContent = toEnglish ? 'Custom quote' : 'Cotización';
-  document.querySelector('.price-card:first-of-type .price-amount strong').textContent = toEnglish ? 'By proposal' : 'A medida';
+  document.querySelector('.price-card:first-of-type .price-amount small').textContent = toEnglish ? 'Quote' : 'Cotización';
+  document.querySelector('.price-card:first-of-type .price-amount strong').textContent = toEnglish ? 'Custom' : 'A medida';
   document.querySelector('.price-card:first-of-type .price-amount small:last-child').textContent = toEnglish ? 'based on scope and needs' : 'según alcance y necesidades';
   document.querySelector('.price-featured .price-amount strong').textContent = toEnglish ? 'Custom quote' : 'A medida';
   document.querySelector('.price-featured .price-amount small:last-child').textContent = toEnglish ? 'based on scope and needs' : 'según alcance y necesidades';
   document.querySelector('.price-card:nth-child(3) .price-amount strong').textContent = toEnglish ? 'Proposal' : 'Propuesta';
   document.querySelector('.price-card:nth-child(3) .price-amount small:last-child').textContent = toEnglish ? 'tailored to your project' : 'personalizada para tu proyecto';
+  const privacyCopy = document.querySelector('.consent-check span');
+  privacyCopy.innerHTML = toEnglish
+    ? 'I accept the <a href="privacidad.html" target="_blank" rel="noopener">Privacy Notice</a> and authorize the use of my data to respond to my request.'
+    : 'Acepto el <a href="privacidad.html" target="_blank" rel="noopener">Aviso de Privacidad</a> y autorizo el uso de mis datos para responder a mi solicitud.';
+  document.querySelectorAll('.price-card [data-package]').forEach((link) => {
+    const labels = toEnglish ? {Despegue:'Request a quote', Crecimiento:'Request a quote', 'Imperio Digital':'Request a quote'} : {Despegue:'Cotizar Despegue', Crecimiento:'Solicitar cotización', 'Imperio Digital':'Solicitar cotización'};
+    link.childNodes[0].textContent = labels[link.dataset.package] + ' ';
+  });
   document.querySelectorAll('.service-card a').forEach((link, index) => {
     const es = ['Consultar branding e identidad', 'Consultar diseño y desarrollo web', 'Consultar marketing y redes', 'Consultar SEO y posicionamiento local'];
     const en = ['Ask about brand identity', 'Ask about web design and development', 'Ask about marketing and social media', 'Ask about local SEO'];
