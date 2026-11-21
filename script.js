@@ -77,6 +77,7 @@ const spanish = {
   'We help your brand move forward': 'Impulsamos tu marca', 'to the next level.': 'al siguiente nivel.', 'Custom': 'A medida', 'Proposal': 'Propuesta',
   'to look like': 'verse como', 'what it is.': 'lo que es.', 'An integrated approach': 'Enfoque integral', 'Made for you': 'Hecho a tu medida',
   'Ready for what’s next': 'Listo para avanzar', 'Marketing & social media': 'Marketing y redes', 'Launch': 'Despegue', 'Growth': 'Crecimiento',
+  'Marketing and social media': 'Marketing y redes sociales',
   'Digital Empire': 'Imperio Digital', 'your': 'tu', 'brand?': 'marca?', 'Today is': 'Hoy cuenta', 'for you.': 'por ti.',
   'THAT MOVE FORWARD': 'QUE AVANZAN', 'One brand.': 'Una marca.', 'One next level.': 'Un siguiente nivel.',
   'Custom quote': 'A medida', 'based on scope and needs': 'según alcance y necesidades', 'Proposal': 'Propuesta',
