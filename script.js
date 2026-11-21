@@ -40,7 +40,7 @@ const spanish = {
   'PACKAGES FOR EVERY STAGE': 'PAQUETES PARA CADA ETAPA', 'A clear investment.': 'Una inversión clara.', 'A defined scope.': 'Un alcance definido.',
   'Choose the level of support that makes sense for you today. We confirm each proposal after learning about your project.': 'Elige el nivel de acompañamiento que tiene sentido hoy. Cada propuesta se confirma después de entender tu proyecto.',
   '01 / A STRONG START': '01 / PARA EMPEZAR', 'LAUNCH': 'DESPEGUE', 'A professional foundation to present your brand and start attracting customers.': 'Una base profesional para presentar tu marca y empezar a atraer clientes.',
-  'Reference investment': 'Inversión de referencia', 'Primary logo and variations': 'Logotipo principal y variantes', 'Color palette and identity guide': 'Paleta de color y guía de identidad',
+  'Request a quote': 'Solicitar cotización', 'Custom quote': 'Cotización', 'based on scope and needs': 'según alcance y necesidades', 'Request a Launch quote': 'Cotizar Despegue', 'Request a Growth quote': 'Solicitar cotización', 'Request an Empire quote': 'Solicitar cotización', 'I accept the': 'Acepto el', 'Acepto el': 'I accept the', 'Privacy Notice': 'Aviso de Privacidad', 'and authorize the use of my data to respond to my request.': 'y autorizo el uso de mis datos para responder a mi solicitud.', 'y autorizo el uso de mis datos para responder a mi solicitud.': 'and authorize the use of my data to respond to my request.', 'Terms & Conditions': 'Términos y Condiciones', 'The message is prepared on this site; it will only be shared with WhatsApp when you choose to open and send it.': 'El mensaje se prepara en este sitio; solo se compartirá con WhatsApp cuando elijas abrirlo y enviarlo.', 'Primary logo and variations': 'Logotipo principal y variantes', 'Color palette and identity guide': 'Paleta de color y guía de identidad',
   'Responsive one-page landing site': 'Landing page responsiva de una página', '6 social templates and 6 strategic captions': '6 plantillas y 6 copies para redes',
   'Basic Google Business Profile setup': 'Configuración básica de Google Business Profile', 'Estimated delivery: 5–7 business days': 'Entrega estimada: 5–7 días hábiles',
   'Get a Launch quote': 'Cotizar Despegue', 'MOST POPULAR': 'MÁS ELEGIDO', '02 / READY TO GROW': '02 / PARA CRECER', 'GROWTH': 'CRECIMIENTO',
@@ -136,10 +136,13 @@ function applyLanguage(language) {
   document.querySelector('.whatsapp-float').href = toEnglish
     ? `https://wa.me/526291711138?text=${encodeURIComponent('Hello, EmyBrand. I would like information about your services.')}`
     : 'https://wa.me/526291711138?text=Hola%2C%20EmyBrand.%20Quiero%20informaci%C3%B3n%20sobre%20sus%20servicios.';
+  document.querySelector('.price-card:first-of-type .price-amount small').textContent = toEnglish ? 'Custom quote' : 'Cotización';
+  document.querySelector('.price-card:first-of-type .price-amount strong').textContent = toEnglish ? 'By proposal' : 'A medida';
+  document.querySelector('.price-card:first-of-type .price-amount small:last-child').textContent = toEnglish ? 'based on scope and needs' : 'según alcance y necesidades';
   document.querySelector('.price-featured .price-amount strong').textContent = toEnglish ? 'Custom quote' : 'A medida';
   document.querySelector('.price-featured .price-amount small:last-child').textContent = toEnglish ? 'based on scope and needs' : 'según alcance y necesidades';
-  document.querySelector('.price-card:last-of-type .price-amount strong').textContent = toEnglish ? 'Proposal' : 'Propuesta';
-  document.querySelector('.price-card:last-of-type .price-amount small:last-child').textContent = toEnglish ? 'tailored to your project' : 'personalizada para tu proyecto';
+  document.querySelector('.price-card:nth-child(3) .price-amount strong').textContent = toEnglish ? 'Proposal' : 'Propuesta';
+  document.querySelector('.price-card:nth-child(3) .price-amount small:last-child').textContent = toEnglish ? 'tailored to your project' : 'personalizada para tu proyecto';
   document.querySelectorAll('.service-card a').forEach((link, index) => {
     const es = ['Consultar branding e identidad', 'Consultar diseño y desarrollo web', 'Consultar marketing y redes', 'Consultar SEO y posicionamiento local'];
     const en = ['Ask about brand identity', 'Ask about web design and development', 'Ask about marketing and social media', 'Ask about local SEO'];
