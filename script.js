@@ -75,7 +75,13 @@ const spanish = {
   'All rights reserved.': 'Todos los derechos reservados.', 'Write to us on WhatsApp at 629 171 1138': 'Escríbenos por WhatsApp al 629 171 1138',
   'Facebook for EmyBrand': 'Facebook de EmyBrand', 'Instagram for EmyBrand': 'Instagram de EmyBrand', 'Facebook': 'Facebook', 'Instagram': 'Instagram',
   'We help your brand move forward': 'Impulsamos tu marca', 'to the next level.': 'al siguiente nivel.', 'Custom': 'A medida', 'Proposal': 'Propuesta',
-  'Open menu': 'Abrir menú', 'Close menu': 'Cerrar menú', 'EmyBrand, home': 'EmyBrand, inicio', 'Main navigation': 'Navegación principal',
+  'to look like': 'verse como', 'what it is.': 'lo que es.', 'An integrated approach': 'Enfoque integral', 'Made for you': 'Hecho a tu medida',
+  'Ready for what’s next': 'Listo para avanzar', 'Marketing & social media': 'Marketing y redes', 'Launch': 'Despegue', 'Growth': 'Crecimiento',
+  'Digital Empire': 'Imperio Digital', 'your': 'tu', 'brand?': 'marca?', 'Today is': 'Hoy cuenta', 'for you.': 'por ti.',
+  'THAT MOVE FORWARD': 'QUE AVANZAN', 'One brand.': 'Una marca.', 'One next level.': 'Un siguiente nivel.',
+  'Custom quote': 'A medida', 'based on scope and needs': 'según alcance y necesidades', 'Proposal': 'Propuesta',
+  'based on your project': 'personalizada para tu proyecto', 'Explore the studio ↗': 'CONOCE EL ESTUDIO ↗',
+  'Open menu': 'Abrir menú', 'Close menu': 'Cerrar menú', 'EmyBrand, home': 'EmyBrand, inicio', 'Main navigation': 'Navegación principal', 'Back to top ↑': 'VOLVER ARRIBA ↑',
   'Abstract brand graphic composition': 'Composición gráfica abstracta de marca'
 };
 const english = Object.fromEntries(Object.entries(spanish).map(([en, es]) => [es, en]));
@@ -88,7 +94,7 @@ function applyLanguage(language) {
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   let textNode;
   while ((textNode = walker.nextNode())) {
-    const trimmed = textNode.nodeValue.trim();
+    const trimmed = textNode.nodeValue.trim().replace(/\s+/gu, ' ');
     if (!trimmed) continue;
     const translated = toEnglish ? (english[trimmed] || trimmed) : (spanish[trimmed] || trimmed);
     const leading = textNode.nodeValue.match(/^\s*/)[0];
@@ -114,6 +120,25 @@ function applyLanguage(language) {
   document.querySelector('.wordmark').setAttribute('aria-label', toEnglish ? 'EmyBrand, home' : 'EmyBrand, inicio');
   document.querySelector('.menu-toggle').setAttribute('aria-label', toEnglish ? 'Open menu' : 'Abrir menú');
   document.querySelector('.whatsapp-float').setAttribute('aria-label', toEnglish ? 'Write to us on WhatsApp at 629 171 1138' : 'Escríbenos por WhatsApp al 629 171 1138');
+  document.querySelector('.intro-grid h2').innerHTML = toEnglish
+    ? 'Your business deserves<br>to look like <em>what it is.</em>'
+    : 'Tu negocio merece<br>verse como <em>lo que es.</em>';
+  document.querySelector('.contact-copy h2').innerHTML = toEnglish
+    ? 'Ready to move<br>your brand <em>forward?</em>'
+    : '¿Listo para impulsar<br>tu <em>marca?</em>';
+  document.querySelector('.tile-two b').innerHTML = toEnglish ? 'Today is<br>yours.' : 'Hoy cuenta<br>por ti.';
+  document.querySelector('.art-bottom b').innerHTML = toEnglish ? 'One brand.<br>One next level.' : 'Una marca.<br>Un siguiente nivel.';
+  document.querySelector('.art-back span:nth-child(2)').textContent = toEnglish ? 'THAT MOVE FORWARD' : 'QUE AVANZAN';
+  document.querySelector('.footer-bottom span:first-child').innerHTML = toEnglish
+    ? `© <span id="year">${new Date().getFullYear()}</span> EmyBrand. All rights reserved.`
+    : `© <span id="year">${new Date().getFullYear()}</span> EmyBrand. Todos los derechos reservados.`;
+  document.querySelector('.whatsapp-float').href = toEnglish
+    ? `https://wa.me/526291711138?text=${encodeURIComponent('Hello, EmyBrand. I would like information about your services.')}`
+    : 'https://wa.me/526291711138?text=Hola%2C%20EmyBrand.%20Quiero%20informaci%C3%B3n%20sobre%20sus%20servicios.';
+  document.querySelector('.price-featured .price-amount strong').textContent = toEnglish ? 'Custom quote' : 'A medida';
+  document.querySelector('.price-featured .price-amount small:last-child').textContent = toEnglish ? 'based on scope and needs' : 'según alcance y necesidades';
+  document.querySelector('.price-card:last-of-type .price-amount strong').textContent = toEnglish ? 'Proposal' : 'Propuesta';
+  document.querySelector('.price-card:last-of-type .price-amount small:last-child').textContent = toEnglish ? 'tailored to your project' : 'personalizada para tu proyecto';
   document.querySelectorAll('.service-card a').forEach((link, index) => {
     const es = ['Consultar branding e identidad', 'Consultar diseño y desarrollo web', 'Consultar marketing y redes', 'Consultar SEO y posicionamiento local'];
     const en = ['Ask about brand identity', 'Ask about web design and development', 'Ask about marketing and social media', 'Ask about local SEO'];
@@ -122,7 +147,7 @@ function applyLanguage(language) {
   document.querySelector('.social-links').setAttribute('aria-label', toEnglish ? 'Social media' : 'Redes sociales');
   document.querySelectorAll('.social-links a').forEach((link) => link.setAttribute('aria-label', toEnglish ? `${link.textContent.includes('Facebook') ? 'Facebook' : 'Instagram'} for EmyBrand` : `${link.textContent.includes('Facebook') ? 'Facebook' : 'Instagram'} de EmyBrand`));
   languageButton.innerHTML = toEnglish ? 'ES <span>/ EN</span>' : 'EN <span>/ ES</span>';
-  languageButton.setAttribute('aria-label', toEnglish ? 'Cambiar a español' : 'Switch to English');
+  languageButton.setAttribute('aria-label', toEnglish ? 'Switch to Spanish' : 'Switch to English');
   languageButton.setAttribute('lang', toEnglish ? 'es' : 'en');
   localStorage.setItem('emybrand-language', language);
 }
