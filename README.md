@@ -20,6 +20,6 @@ El flujo de GitHub Actions en `.github/workflows/pages.yml` publica el contenido
 
 - Sustituir los conceptos visuales demostrativos por trabajos reales autorizados.
 - Confirmar que el precio de referencia del paquete Despegue es `$10,000 MXN` y definir impuestos, anticipo, rondas de ajuste y condiciones.
-- Añadir WhatsApp y correo oficiales. El formulario local prepara un mensaje para copiar mientras no se configure el canal de contacto.
+- Confirmar que el número de WhatsApp publicado sea `+52 629 171 1138`.
 - Incorporar el logotipo maestro cuando se entreguen los archivos vectoriales oficiales.
 - Definir si dominio, hosting y soporte posterior formarán parte de futuras propuestas.
